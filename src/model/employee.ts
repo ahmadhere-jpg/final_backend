@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-// Employee Information Schema
+
 const employeeSchema = new mongoose.Schema({
   employeeId:String,
   firstName: String,
@@ -15,4 +15,5 @@ const employeeSchema = new mongoose.Schema({
   endDate: Date,
   employmentStatus: String,
 });
+
 export const Employee = mongoose.model('Employee', employeeSchema);

@@ -10,7 +10,6 @@ const router = express.Router();
 
 router.post('/new', async (req: express.Request, res: express.Response) => {
     try {
-        const contactNo = await Employee.findOne({ employeeId: req.body.employeeId });
         await Employee.create(req.body);
         res.status(200).json({ message: "Employee Added Sucessfully" });
     } catch (error) {
@@ -45,9 +44,8 @@ router.get('/:id', async (req: express.Request, res: express.Response) => {
 router.patch('/update_employees/:id', async (req: express.Request, res: express.Response) => {
     try {
         const EmployeeId = req.params.id;
-        const updatedFields = req.body; // Updated fields will be present in the request body
+        const updatedFields = req.body; 
 
-        // Construct an object with the updated fields
         const updatedEmployeeFields: any = {};
         for (const key in updatedFields) {
             updatedEmployeeFields[key] = updatedFields[key];
