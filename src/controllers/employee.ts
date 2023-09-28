@@ -13,13 +13,6 @@ router.post('/new', async (req: express.Request, res: express.Response) => {
         const contactNo = await Employee.findOne({ employeeId: req.body.employeeId });
         await Employee.create(req.body);
         res.status(200).json({ message: "Employee Added Sucessfully" });
-        // if (contactNo) {
-        //     return res.status(400).json({ message: "Employee already exists" });
-        // } else {
-        //     await Employee.create(req.body);
-        //     res.status(200).json({ message: "Employee Added Sucessfully" });
-
-        // }
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
