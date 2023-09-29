@@ -10,12 +10,14 @@ const router = express.Router();
 
 router.post('/new', async (req: express.Request, res: express.Response) => {
     try {
-        await Employee.create(req.body);
-        res.status(200).json({ message: "Employee Added Sucessfully" });
+        const createdEmployee = await Employee.create(req.body);
+        res.status(201).json({ message: "Employee Added Successfully", employee: createdEmployee });
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        console.error('Error adding employee:', error);
+        res.status(500).json({ message: "Internal server error" });
     }
 });
+
 
 // Read all employees
 router.get('/all', async (req: express.Request, res: express.Response) => {
